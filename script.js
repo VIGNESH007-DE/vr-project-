@@ -1,5 +1,5 @@
 // Initialize EmailJS
-emailjs.init('YOUR_EMAILJS_PUBLIC_KEY'); // Replace with your EmailJS Public Key
+emailjs.init('Gwy8FMjdbQDN7m3gI'); // Replace with your EmailJS Public Key
 
 const checkboxes = document.querySelectorAll('.video-checkbox');
 const submitButton = document.getElementById('submitButton');
@@ -19,7 +19,7 @@ function checkAllChecked() {
 }
 
 function submitExercise() {
-  emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+  emailjs.send('service_4qfyu57', 'template_jpzi29a', {
     to_name: 'Doctor',
     from_name: 'Stroke Patient',
     message: 'Patient has completed today\'s exercises!'
