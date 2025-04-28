@@ -1,0 +1,35 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 30px;
+}
+
+#videoContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.video iframe {
+  width: 80%;
+  height: 300px;
+}
+
+#submitButton {
+  margin-top: 30px;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#submitButton:hover {
+  background-color: #218838;
+}
