@@ -1,26 +1,20 @@
 // Initialize EmailJS
-emailjs.init('YOUR_EMAILJS_PUBLIC_KEY'); // Replace with your actual EmailJS public key
+emailjs.init('YOUR_EMAILJS_PUBLIC_KEY'); // Replace with your EmailJS Public Key
 
-let players = [];
-let finishedVideos = 0;
+const checkboxes = document.querySelectorAll('.video-checkbox');
+const submitButton = document.getElementById('submitButton');
 
-function onYouTubeIframeAPIReady() {
-  players = [
-    new YT.Player('video1', { events: { 'onStateChange': onPlayerStateChange } }),
-    new YT.Player('video2', { events: { 'onStateChange': onPlayerStateChange } }),
-    new YT.Player('video3', { events: { 'onStateChange': onPlayerStateChange } }),
-    new YT.Player('video4', { events: { 'onStateChange': onPlayerStateChange } }),
-    new YT.Player('video5', { events: { 'onStateChange': onPlayerStateChange } }),
-  ];
-}
+// Add event listener to all checkboxes
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener('change', checkAllChecked);
+});
 
-function onPlayerStateChange(event) {
-  if (event.data == YT.PlayerState.ENDED) {
-    finishedVideos++;
-
-    if (finishedVideos === 5) {
-      document.getElementById('submitButton').style.display = 'block';
-    }
+function checkAllChecked() {
+  const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+  if (allChecked) {
+    submitButton.style.display = 'block';
+  } else {
+    submitButton.style.display = 'none';
   }
 }
 
@@ -36,9 +30,3 @@ function submitExercise() {
     alert('Submission failed. Please try again.');
   });
 }
-
-// Load the IFrame Player API code asynchronously
-let tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-let firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
