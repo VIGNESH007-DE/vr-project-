@@ -1,8 +1,3 @@
-// Initialize EmailJS safely
-(function() {
-  emailjs.init('Gwy8FMjdbQDN7m3gI'); // ✅ Correct: Your EmailJS Public Key
-})();
-
 // Get all checkboxes and submit button
 const checkboxes = document.querySelectorAll('.video-checkbox');
 const submitButton = document.getElementById('submitButton');
@@ -22,21 +17,18 @@ function checkAllChecked() {
   }
 }
 
-// Function to send Email when Submit Button is clicked
+// Function to display success message after submission
 function submitExercise() {
-  emailjs.send('service_4qfyu57', 'template_jpzi29a', {
-    to_name: 'Doctor',
-    from_name: 'Stroke Patient',
-    message: 'Patient has completed today\'s exercises!'
-  })
-  .then(function(response) {
-    alert('✅ Submission successful! Doctor has been notified.');
-    console.log('SUCCESS!', response.status, response.text);
-    // Optionally disable the button after submission
-    submitButton.disabled = true;
-    submitButton.innerText = 'Submitted';
-  }, function(error) {
-    alert('❌ Submission failed. Please try again.');
-    console.error('FAILED...', error);
-  });
+  // Display success message
+  const successMessage = document.createElement('div');
+  successMessage.style.textAlign = 'center';
+  successMessage.style.fontSize = '24px';
+  successMessage.style.color = 'green';
+  successMessage.style.marginTop = '20px';
+  successMessage.textContent = 'Great Work! Keep it up!';
+  document.querySelector('.container').appendChild(successMessage);
+
+  // Optionally disable the button after submission
+  submitButton.disabled = true;
+  submitButton.innerText = 'Submitted';
 }
