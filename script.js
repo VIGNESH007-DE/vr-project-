@@ -1,6 +1,8 @@
 // Get all checkboxes and submit button
 const checkboxes = document.querySelectorAll('.video-checkbox');
 const submitButton = document.getElementById('submitButton');
+const videoContainer = document.getElementById('videoContainer');
+const congratulationsMessage = document.getElementById('congratulationsMessage');
 
 // Add event listeners to checkboxes
 checkboxes.forEach(checkbox => {
@@ -11,22 +13,19 @@ checkboxes.forEach(checkbox => {
 function checkAllChecked() {
   const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
   if (allChecked) {
-    submitButton.style.display = 'block'; // ✅ Show Submit Button
+    submitButton.style.display = 'block'; // Show Submit Button
   } else {
-    submitButton.style.display = 'none';  // ✅ Hide Submit Button
+    submitButton.style.display = 'none';  // Hide Submit Button
   }
 }
 
-// Function to display success message after submission
+// Function to handle the submission
 function submitExercise() {
-  // Display success message
-  const successMessage = document.createElement('div');
-  successMessage.style.textAlign = 'center';
-  successMessage.style.fontSize = '24px';
-  successMessage.style.color = 'green';
-  successMessage.style.marginTop = '20px';
-  successMessage.textContent = 'Great Work! Keep it up!';
-  document.querySelector('.container').appendChild(successMessage);
+  // Hide the video container
+  videoContainer.style.display = 'none';
+
+  // Show the congratulations message
+  congratulationsMessage.style.display = 'block';
 
   // Optionally disable the button after submission
   submitButton.disabled = true;
