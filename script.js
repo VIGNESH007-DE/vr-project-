@@ -1,47 +1,43 @@
 // Initialize EmailJS
-(function() {
-  emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
-})();
+emailjs.init('YOUR_EMAILJS_PUBLIC_KEY'); // Replace with your actual EmailJS public key
 
-// Track videos completed
-let videosWatched = 0;
+let players = [];
+let finishedVideos = 0;
 
-// List of iframe IDs
-const videoIds = ['video1', 'video2', 'video3', 'video4', 'video5'];
-
-// After YouTube API is ready
 function onYouTubeIframeAPIReady() {
-  videoIds.forEach(id => {
-    const player = new YT.Player(id, {
-      events: {
-        'onStateChange': function(event) {
-          if (event.data === YT.PlayerState.ENDED) {
-            videosWatched++;
-            if (videosWatched === 5) {
-              document.getElementById('submitButton').style.display = 'inline-block';
-            }
-          }
-        }
-      }
-    });
-  });
+  players = [
+    new YT.Player('video1', { events: { 'onStateChange': onPlayerStateChange } }),
+    new YT.Player('video2', { events: { 'onStateChange': onPlayerStateChange } }),
+    new YT.Player('video3', { events: { 'onStateChange': onPlayerStateChange } }),
+    new YT.Player('video4', { events: { 'onStateChange': onPlayerStateChange } }),
+    new YT.Player('video5', { events: { 'onStateChange': onPlayerStateChange } }),
+  ];
 }
 
-// Submit button function
+function onPlayerStateChange(event) {
+  if (event.data == YT.PlayerState.ENDED) {
+    finishedVideos++;
+
+    if (finishedVideos === 5) {
+      document.getElementById('submitButton').style.display = 'block';
+    }
+  }
+}
+
 function submitExercise() {
-  emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-    patient_name: "Stroke Patient",
-    message: "The patient has completed today's exercise videos."
+  emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', {
+    to_name: 'Doctor',
+    from_name: 'Stroke Patient',
+    message: 'Patient has completed today\'s exercises!'
   })
   .then(function(response) {
-    alert("Doctor has been notified successfully!");
-    window.location.reload(); // Reload for the next day's work
+    alert('Submission successful! Doctor has been notified.');
   }, function(error) {
-    alert("Failed to send email. Please try again later.");
+    alert('Submission failed. Please try again.');
   });
 }
 
-// Load YouTube Iframe API dynamically
+// Load the IFrame Player API code asynchronously
 let tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 let firstScriptTag = document.getElementsByTagName('script')[0];
