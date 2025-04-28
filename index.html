@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stroke Patient Exercise</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Stroke Patient Daily Exercises</h1>
+
+  <div id="videoContainer">
+    <div class="video">
+      <iframe id="video1" src="https://www.youtube.com/embed/VIDEO_ID_1" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="video">
+      <iframe id="video2" src="https://www.youtube.com/embed/VIDEO_ID_2" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="video">
+      <iframe id="video3" src="https://www.youtube.com/embed/VIDEO_ID_3" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="video">
+      <iframe id="video4" src="https://www.youtube.com/embed/VIDEO_ID_4" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="video">
+      <iframe id="video5" src="https://www.youtube.com/embed/VIDEO_ID_5" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <button id="submitButton" style="display: none;" onclick="submitExercise()">Submit</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
