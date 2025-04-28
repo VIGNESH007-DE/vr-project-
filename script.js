@@ -9,42 +9,39 @@ let videosWatched = 0;
 // List of iframe IDs
 const videoIds = ['video1', 'video2', 'video3', 'video4', 'video5'];
 
-// For each iframe, add a listener to know when it finishes
-videoIds.forEach(id => {
-  const iframe = document.getElementById(id);
-
-  // YouTube iframe API needs to be loaded
-  iframe.addEventListener('load', () => {
+// After YouTube API is ready
+function onYouTubeIframeAPIReady() {
+  videoIds.forEach(id => {
     const player = new YT.Player(id, {
       events: {
         'onStateChange': function(event) {
           if (event.data === YT.PlayerState.ENDED) {
             videosWatched++;
             if (videosWatched === 5) {
-              document.getElementById('submitButton').style.display = 'block';
+              document.getElementById('submitButton').style.display = 'inline-block';
             }
           }
         }
       }
     });
   });
-});
+}
 
 // Submit button function
 function submitExercise() {
   emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-    patient_name: "Stroke Patient",  // You can make it dynamic if you want
+    patient_name: "Stroke Patient",
     message: "The patient has completed today's exercise videos."
   })
   .then(function(response) {
-    alert("Doctor has been notified!");
-    window.location.reload(); // Reload page for next day
+    alert("Doctor has been notified successfully!");
+    window.location.reload(); // Reload for the next day's work
   }, function(error) {
-    alert("Error sending email. Please try again.");
+    alert("Failed to send email. Please try again later.");
   });
 }
 
-// Load YouTube Iframe API
+// Load YouTube Iframe API dynamically
 let tag = document.createElement('script');
 tag.src = "https://www.youtube.com/iframe_api";
 let firstScriptTag = document.getElementsByTagName('script')[0];
