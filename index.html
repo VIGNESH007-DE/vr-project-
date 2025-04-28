@@ -3,42 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Stroke Patient Daily Exercises</title>
+  <title>Stroke Patient Exercise</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container" id="mainContainer">
+  <div class="container">
     <h1>Stroke Patient Daily Exercises</h1>
-
-    <p class="subtitle">Please watch all 5 exercise videos completely before submitting.</p>
+    <p class="subtitle">Please watch all 5 exercise videos and tick the box after watching.</p>
 
     <div id="videoContainer">
       <div class="video-card">
-        <iframe id="video1" src="https://www.youtube.com/embed/TzjooY5FyaY" frameborder="0" allowfullscreen></iframe>
+        <iframe id="video1" src="https://www.youtube.com/embed/sFM-ip_WxTM" frameborder="0" allowfullscreen></iframe>
+        <label><input type="checkbox" class="video-checkbox"> I have completed this video</label>
       </div>
       <div class="video-card">
         <iframe id="video2" src="https://www.youtube.com/embed/2pLT-olgUJs" frameborder="0" allowfullscreen></iframe>
+        <label><input type="checkbox" class="video-checkbox"> I have completed this video</label>
       </div>
       <div class="video-card">
-        <iframe id="video3" src="https://www.youtube.com/embed/sFvPq2Cjzsc" frameborder="0" allowfullscreen></iframe>
+        <iframe id="video3" src="https://www.youtube.com/embed/gDxyQGyOx_0" frameborder="0" allowfullscreen></iframe>
+        <label><input type="checkbox" class="video-checkbox"> I have completed this video</label>
       </div>
       <div class="video-card">
-        <iframe id="video4" src="https://www.youtube.com/embed/bSXsG9V2wzA" frameborder="0" allowfullscreen></iframe>
+        <iframe id="video4" src="https://www.youtube.com/embed/-rwby0zA6Vs" frameborder="0" allowfullscreen></iframe>
+        <label><input type="checkbox" class="video-checkbox"> I have completed this video</label>
       </div>
       <div class="video-card">
-        <iframe id="video5" src="https://www.youtube.com/embed/boKXzAqkZmY" frameborder="0" allowfullscreen></iframe>
+        <iframe id="video5" src="https://www.youtube.com/embed/8jacQOSOCwc" frameborder="0" allowfullscreen></iframe>
+        <label><input type="checkbox" class="video-checkbox"> I have completed this video</label>
       </div>
     </div>
 
     <button id="submitButton" style="display: none;" onclick="submitExercise()">Submit</button>
 
-    <div id="congratsMessage" style="display: none;">
-      <h2>🎉 Great Work! 🎉</h2>
-      <p>You've successfully completed today's exercise. Come back tomorrow and keep up the great work! 💪</p>
+    <div id="congratulationsMessage" style="display: none;">
+      <h2>🎉 Congratulations! 🎉</h2>
+      <p>Great work! You've completed today's exercises!</p>
+      <p>Come back tomorrow to continue your progress.</p>
     </div>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
